@@ -13,19 +13,19 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
 //aplica los estilos
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
     width: 400,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3)
-  }
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 const Recipe = ({ receta }) => {
@@ -51,7 +51,7 @@ const Recipe = ({ receta }) => {
   };
 
   //muestra los ingredientes con sus medidas desde la respuesta de la API
-  const mostrarIngredientes = info => {
+  const mostrarIngredientes = (info) => {
     //crea un array vacio
     let ingredientes = [];
 
@@ -62,7 +62,7 @@ const Recipe = ({ receta }) => {
         //al existir lo agrega al array con el nombre y la cantidad
         ingredientes.push(
           <li>
-            {info[`strIngredient${i}`]} -> {info[`strMeasure${i}`]}
+            {info[`strIngredient${i}`]} -{">"} {info[`strMeasure${i}`]}
           </li>
         );
       }
@@ -122,7 +122,7 @@ Recipe.propTypes = {
   receta: PropTypes.object.isRequired,
   setIdReceta: PropTypes.func.isRequired,
   info: PropTypes.object.isRequired,
-  setInfo: PropTypes.func.isRequired
+  setInfo: PropTypes.func.isRequired,
 };
 
 export default Recipe;
